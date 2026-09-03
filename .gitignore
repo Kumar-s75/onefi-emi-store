@@ -10,10 +10,9 @@ logs
 
 .DS_Store
 
-prisma/.env
-
 # Keep required project files
 !README.md
 !backend/prisma/schema.prisma
 !backend/prisma/seed.ts
 !backend/.env.example
+!frontend/.env.example

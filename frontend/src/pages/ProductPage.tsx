@@ -6,6 +6,7 @@ import { formatInr } from '../utils/currency';
 
 function ProductPage() {
   const { slug } = useParams();
+  const productSlug = slug ?? '';
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -14,9 +15,7 @@ function ProductPage() {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
-    if (!slug) {
-      setError('Product slug is missing.');
-      setLoading(false);
+    if (!productSlug) {
       return;
     }
 
@@ -24,7 +23,7 @@ function ProductPage() {
 
     async function loadProduct() {
       try {
-        const result = await getProductBySlug(slug);
+        const result = await getProductBySlug(productSlug);
         if (!ignore) {
           setProduct(result);
           setError(null);
@@ -49,7 +48,7 @@ function ProductPage() {
     return () => {
       ignore = true;
     };
-  }, [slug]);
+  }, [productSlug]);
 
   const selectedVariant = useMemo(
     () => product?.variants.find((variant) => variant.id === selectedVariantId) ?? product?.variants[0],
@@ -60,14 +59,6 @@ function ProductPage() {
     () => selectedVariant?.emiPlans.find((plan) => plan.id === selectedPlanId) ?? selectedVariant?.emiPlans[0] ?? null,
     [selectedPlanId, selectedVariant],
   );
-
-  useEffect(() => {
-    if (!selectedVariant) return;
-    if (selectedPlan && selectedVariant.emiPlans.some((plan) => plan.id === selectedPlan.id)) {
-      return;
-    }
-    setSelectedPlanId(selectedVariant.emiPlans[0]?.id ?? '');
-  }, [selectedPlan, selectedVariant]);
 
   const handleVariantChange = (variant: ProductVariant) => {
     setSelectedVariantId(variant.id);
@@ -98,12 +89,12 @@ function ProductPage() {
     );
   }
 
-  if (error || !product || !selectedVariant) {
+  if (!productSlug || error || !product || !selectedVariant) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-slate-50 p-6">
         <div className="rounded-2xl bg-white p-8 text-center shadow-soft">
           <h1 className="text-2xl font-bold text-slate-900">Product unavailable</h1>
-          <p className="mt-3 text-slate-600">{error ?? 'We could not load this product.'}</p>
+          <p className="mt-3 text-slate-600">{error ?? (!productSlug ? 'Product slug is missing.' : 'We could not load this product.')}</p>
         </div>
       </main>
     );

@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.emiPlan.deleteMany();
+  await prisma.eMIPlan.deleteMany();
   await prisma.productVariant.deleteMany();
   await prisma.product.deleteMany();
 
@@ -151,7 +151,7 @@ async function main() {
         },
       });
 
-      await prisma.emiPlan.createMany({
+      await prisma.eMIPlan.createMany({
         data: variant.emiPlans.map((plan) => ({
           variantId: createdVariant.id,
           tenureMonths: plan.tenureMonths,
