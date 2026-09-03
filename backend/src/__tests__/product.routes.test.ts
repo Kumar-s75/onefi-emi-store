@@ -27,6 +27,9 @@ describe('product API', () => {
     expect(response.body.success).toBe(true);
     expect(response.body.data.slug).toBe('iphone-17-pro');
     expect(Array.isArray(response.body.data.variants)).toBe(true);
-    expect(response.body.data.variants[0].emiPlans.length).toBeGreaterThan(0);
+        expect(response.body.data.variants[0].emiPlans).toHaveLength(7);
+        expect(response.body.data.variants[0].emiPlans.map((plan: { tenureMonths: number }) => plan.tenureMonths)).toEqual([
+          3, 6, 12, 24, 36, 48, 60,
+        ]);
   });
 });

@@ -113,3 +113,7 @@ Deploy `frontend/` to Vercel or a comparable static host. Configure `VITE_API_BA
 | Responsive UI states | Loading, error, empty-plan, and responsive layouts | Complete |
 | Automated coverage | Supertest/Vitest backend tests and React Testing Library frontend test | Complete |
 | Deployment documentation | Setup, environment, migration, hosting, and demo instructions in this README | Complete |
+| Deployed demo URL | Requires a Vercel/Render deployment and externally supplied project credentials | Pending external deployment |
+| 2-5 minute demo video | Requires recording and uploading to Google Drive or YouTube | Pending external recording |
+
+The source repository and local implementation are complete. The deployed URL and video are submission artifacts that must be created and linked after deployment/recording; they cannot be generated solely inside this local workspace.
