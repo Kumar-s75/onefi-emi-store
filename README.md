@@ -93,7 +93,15 @@ Seed only a non-production/demo database with `npm run db:seed --workspace backe
 
 ### Backend
 
-Deploy `backend/` to Render or a comparable Node host. Build with `npm run build`, start with `npm run start`, and configure `DATABASE_URL`, `PORT`, `FRONTEND_URL`, and `NODE_ENV`.
+Deploy `backend/` to Render or a comparable Node host. Because the TypeScript compiler and Node type definitions are development dependencies, use this Render configuration:
+
+```text
+Root Directory: backend
+Build Command: npm install --include=dev && npx prisma generate && npx prisma migrate deploy && npm run build
+Start Command: npm run start (runs `node dist/src/server.js`)
+```
+
+Configure `DATABASE_URL`, `PORT`, `FRONTEND_URL`, and `NODE_ENV` as environment variables. `--include=dev` is required when the host sets production dependency mode during the build; otherwise `tsc` cannot find `@types/node`.
 
 ### Frontend
 
