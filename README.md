@@ -99,21 +99,7 @@ Deploy `backend/` to Render or a comparable Node host. Build with `npm run build
 
 Deploy `frontend/` to Vercel or a comparable static host. Configure `VITE_API_BASE_URL` to the deployed API base URL, for example `https://api.example.com/api`, then build with `npm run build`.
 
-## Requirement matrix
 
-| Requirement | Implementation | Status |
-| --- | --- | --- |
-| Product listing | `frontend/src/pages/HomePage.tsx` and `GET /api/products` | Complete |
-| Product detail route | `frontend/src/pages/ProductPage.tsx` and `/products/:slug` | Complete |
-| Variant selection | Product detail thumbnails and variant controls | Complete |
-| EMI plan selection | Radio-group plan controls with monthly payment, tenure, interest, cashback | Complete |
-| Proceed confirmation | Confirmation dialog on the product detail page | Complete |
-| Database source of truth | Prisma models, migration, and seed in `backend/prisma/` | Complete |
-| REST API layering | Routes, controllers, services, validators, and error middleware | Complete |
-| Responsive UI states | Loading, error, empty-plan, and responsive layouts | Complete |
-| Automated coverage | Supertest/Vitest backend tests and React Testing Library frontend test | Complete |
-| Deployment documentation | Setup, environment, migration, hosting, and demo instructions in this README | Complete |
-| Deployed demo URL | Requires a Vercel/Render deployment and externally supplied project credentials | Pending external deployment |
-| 2-5 minute demo video | Requires recording and uploading to Google Drive or YouTube | Pending external recording |
 
-The source repository and local implementation are complete. The deployed URL and video are submission artifacts that must be created and linked after deployment/recording; they cannot be generated solely inside this local workspace.
+
+
