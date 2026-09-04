@@ -9,6 +9,14 @@ A database-backed smartphone EMI product browsing flow built with React, TypeScr
 - `backend/prisma/`: PostgreSQL schema, migration history, and seed data.
 - Data flow: React service layer -> Express route -> controller -> service -> Prisma -> PostgreSQL.
 
+## Tech stack
+
+- Frontend: React, TypeScript, Vite, React Router, Tailwind CSS
+- Backend: Node.js, Express, TypeScript, Zod, Helmet, CORS
+- Database: PostgreSQL hosted on Neon
+- ORM and migrations: Prisma
+- Testing: Vitest, Supertest, React Testing Library
+
 ## Requirements
 
 - Node.js 20 or newer
@@ -56,6 +64,58 @@ Open http://localhost:5173. The API health check is available at http://localhos
 - `GET /api/products/slug/:slug`
 
 Successful product responses include variants. Product detail responses include each variant's EMI plans. Product and EMI data is read from PostgreSQL; the frontend does not contain production product records.
+
+### Example response
+
+`GET /api/products/slug/iphone-17-pro` returns:
+
+```json
+{
+	"success": true,
+	"data": {
+		"slug": "iphone-17-pro",
+		"name": "iPhone 17 Pro",
+		"variants": [
+			{
+				"color": "Silver",
+				"storage": "256GB",
+				"mrp": "127400",
+				"sellingPrice": "119900",
+				"imageUrl": "https://images.unsplash.com/...",
+				"emiPlans": [
+					{
+						"tenureMonths": 3,
+						"interestRate": "0",
+						"monthlyPayment": "44967",
+						"cashback": "7500"
+					}
+				]
+			}
+		]
+	}
+}
+```
+
+### Product routes
+
+- `/products/iphone-17-pro`
+- `/products/samsung-galaxy-s24-ultra`
+- `/products/google-pixel-9-pro`
+
+The database is seeded with 3 products, 7 variants, and 33 EMI plans. The iPhone variants include the reference tenures of 3, 6, 12, 24, 36, 48, and 60 months.
+
+## Database schema
+
+The Prisma schema is in [backend/prisma/schema.prisma](backend/prisma/schema.prisma).
+
+- `Product`: slug, name, description, timestamps
+- `ProductVariant`: color, storage, finish, MRP, selling price, image URL
+- `EMIPlan`: tenure, interest rate, monthly payment, cashback
+- `Product` has many `ProductVariant` records.
+- `ProductVariant` has many `EMIPlan` records.
+- Child records cascade when a product or variant is deleted.
+
+The migration is stored in `backend/prisma/migrations/`, and demo records are created by `backend/prisma/seed.ts`.
 
 ## Verification
 
@@ -106,6 +166,27 @@ Configure `DATABASE_URL`, `PORT`, `FRONTEND_URL`, and `NODE_ENV` as environment 
 ### Frontend
 
 Deploy `frontend/` to Vercel or a comparable static host. Configure `VITE_API_BASE_URL` to the deployed API base URL, for example `https://api.example.com/api`, then build with `npm run build`.
+
+### Live demo
+
+- Frontend: https://onefi-emi-store-frontend.vercel.app
+- Backend health: https://onefi-emi-store-083s.onrender.com/health
+- Backend products: https://onefi-emi-store-083s.onrender.com/api/products
+
+The frontend Vercel environment variable must be:
+
+```text
+VITE_API_BASE_URL=https://onefi-emi-store-083s.onrender.com/api
+```
+
+## Submission deliverables
+
+- GitHub repository: https://github.com/Kumar-s75/onefi-emi-store
+- Deployed frontend: https://onefi-emi-store-frontend.vercel.app
+- Deployed backend: https://onefi-emi-store-083s.onrender.com
+- Demo video: **Add the public Google Drive or YouTube link here after recording.**
+
+The video should be 2-5 minutes and show the deployed product flow, backend API response, Prisma schema, and database records. Set the video permission to “Anyone with the link can view.”
 
 
 
