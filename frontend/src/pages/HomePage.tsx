@@ -86,6 +86,9 @@ function HomePage() {
                   alt={`${product.name} product image`}
                   className="h-72 w-full object-cover"
                   loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.src = product.variants[0]?.imageUrl ?? '';
+                  }}
                 />
                 <div className="p-5">
                   <h2 className="text-xl font-semibold text-slate-900">{product.name}</h2>

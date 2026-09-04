@@ -56,7 +56,7 @@ async function main() {
           mrp: '1,49,900',
           sellingPrice: '1,41,500',
           imageUrl:
-            'https://images.unsplash.com/photo-1678667268678-3f53da35c41c?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=1200&q=80',
           emiPlans: [
             { tenureMonths: 3, interestRate: '0.00', monthlyPayment: '52,607', cashback: '8,000' },
             { tenureMonths: 6, interestRate: '8.50', monthlyPayment: '26,325', cashback: '6,000' },
@@ -130,7 +130,7 @@ async function main() {
           mrp: '1,29,999',
           sellingPrice: '1,19,999',
           imageUrl:
-            'https://images.unsplash.com/photo-1601784551446-20c9e07db0eb?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=80',
           emiPlans: [
             { tenureMonths: 3, interestRate: '0.00', monthlyPayment: '45,000', cashback: '6,800' },
             { tenureMonths: 6, interestRate: '8.50', monthlyPayment: '22,500', cashback: '5,200' },

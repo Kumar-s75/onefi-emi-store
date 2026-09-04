@@ -14,6 +14,9 @@ function ProductGallery({ product, selectedVariant, onVariantChange }: ProductGa
           src={selectedVariant.imageUrl}
           alt={`${product.name} ${selectedVariant.color} variant`}
           className="h-[420px] w-full object-cover"
+          onError={(event) => {
+            event.currentTarget.src = product.variants[0]?.imageUrl ?? '';
+          }}
         />
       </div>
       <div className="mt-4 grid grid-cols-3 gap-3">
@@ -30,7 +33,14 @@ function ProductGallery({ product, selectedVariant, onVariantChange }: ProductGa
             aria-label={`Select ${variant.color} ${variant.storage ?? ''}`}
             aria-pressed={variant.id === selectedVariant.id}
           >
-            <img src={variant.imageUrl} alt={`${variant.color} ${product.name}`} className="h-20 w-full rounded-xl object-cover" />
+            <img
+              src={variant.imageUrl}
+              alt={`${variant.color} ${product.name}`}
+              className="h-20 w-full rounded-xl object-cover"
+              onError={(event) => {
+                event.currentTarget.src = product.variants[0]?.imageUrl ?? '';
+              }}
+            />
           </button>
         ))}
       </div>
