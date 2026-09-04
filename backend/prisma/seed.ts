@@ -95,7 +95,7 @@ async function main() {
           mrp: '1,49,999',
           sellingPrice: '1,39,999',
           imageUrl:
-            'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1200&q=80',
           emiPlans: [
             { tenureMonths: 3, interestRate: '0.00', monthlyPayment: '52,500', cashback: '8,500' },
             { tenureMonths: 6, interestRate: '8.50', monthlyPayment: '26,250', cashback: '6,500' },
@@ -116,7 +116,7 @@ async function main() {
           mrp: '1,09,999',
           sellingPrice: '99,999',
           imageUrl:
-            'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80',
           emiPlans: [
             { tenureMonths: 3, interestRate: '0.00', monthlyPayment: '37,500', cashback: '5,500' },
             { tenureMonths: 6, interestRate: '8.50', monthlyPayment: '18,750', cashback: '4,000' },
@@ -130,7 +130,7 @@ async function main() {
           mrp: '1,29,999',
           sellingPrice: '1,19,999',
           imageUrl:
-            'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=80',
+            'https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=1200&q=80',
           emiPlans: [
             { tenureMonths: 3, interestRate: '0.00', monthlyPayment: '45,000', cashback: '6,800' },
             { tenureMonths: 6, interestRate: '8.50', monthlyPayment: '22,500', cashback: '5,200' },
