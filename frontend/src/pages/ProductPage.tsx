@@ -217,13 +217,25 @@ function ProductPage() {
 
       {showConfirmation && selectedPlan ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4">
-          <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="confirmation-title"
+            className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl"
+          >
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600">Demo confirmation</p>
-                <h2 className="mt-2 text-2xl font-bold text-slate-900">Proceed with this plan</h2>
+                <h2 id="confirmation-title" className="mt-2 text-2xl font-bold text-slate-900">Proceed with this plan</h2>
               </div>
-              <button type="button" onClick={() => setShowConfirmation(false)} className="text-xl text-slate-500">×</button>
+              <button
+                type="button"
+                onClick={() => setShowConfirmation(false)}
+                aria-label="Close confirmation dialog"
+                className="text-xl text-slate-500"
+              >
+                ×
+              </button>
             </div>
 
             <div className="mt-5 space-y-3 text-sm text-slate-700">
